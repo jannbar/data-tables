@@ -1,4 +1,4 @@
-{{-- Access these prop from the `table` component. --}}
+{{-- Access these props from the `table` component. --}}
 @aware(['defaultSortField', 'defaultSortDir'])
 
 @php
@@ -23,11 +23,11 @@
         ]) }}>
         <div class="inline-flex space-x-1 items-center">
             <span>{{ $slot }}</span>
-            <span role="img"
-                {{ $attributes->class([
-                    'text-xs',
-                    'opacity-0 transition-opacity duration-300 group-hover:opacity-100' => $sortField !== $field,
-                ]) }}>
+            <span role="img" @class([
+                'text-xs',
+                'opacity-0 transition-opacity duration-300 group-hover:opacity-100' =>
+                    $sortField !== $field,
+            ])>
                 {{ $sortIcon($field) }}
             </span>
         </div>

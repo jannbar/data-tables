@@ -1,3 +1,3 @@
-<thead {{ $attributes->merge([]) }}>
+<thead {{ $attributes }}>
     {{ $slot }}
 </thead>
