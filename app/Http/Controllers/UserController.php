@@ -13,13 +13,13 @@ class UserController extends Controller
         $defaultSortField = 'id';
         $defaultSortDirection = 'asc';
 
-        $sortField = $request->input('orderBy', $defaultSortField);
-        $sortDirection = $request->input('orderDir', $defaultSortDirection);
+        $sortField = $request->input('sort', $defaultSortField);
+        $sortDirection = $request->input('sortDir', $defaultSortDirection);
 
-        $users = User::orderBy($sortField, $sortDirection)->get();
+        $users = User::orderBy($sortField, $sortDirection)->paginate(10);
 
         $props = [
-            'users' => $users,
+            'users' => $users->appends(['sort' => $sortField, 'sortDir' => $sortDirection]),
             'defaultSortField' => $defaultSortField,
             'defaultSortDir' => $defaultSortDirection,
         ];

@@ -2,12 +2,12 @@
 @aware(['defaultSortField', 'defaultSortDir'])
 
 @php
-    $sortField = request('orderBy', $defaultSortField);
-    $sortDir = fn($field) => $sortField === $field ? (request('orderDir', $defaultSortDir) === 'asc' ? 'desc' : 'asc') : 'asc';
+    $sortField = request('sort', $defaultSortField);
+    $sortDir = fn($field) => $sortField === $field ? (request('sortDir', $defaultSortDir) === 'asc' ? 'desc' : 'asc') : 'asc';
     $sortIcon = fn($field) => $sortField === $field ? ($sortDir($field) === 'asc' ? '↑' : '↓') : '↓';
     $hxGetUrl = fn($field) => request()->fullUrlWithQuery([
-        'orderBy' => $field,
-        'orderDir' => $sortDir($field),
+        'sort' => $field,
+        'sortDir' => $sortDir($field),
     ]);
     $classes = 'px-3 py-3.5 text-left text-sm font-semibold';
 @endphp
