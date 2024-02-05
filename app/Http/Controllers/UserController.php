@@ -16,10 +16,14 @@ class UserController extends Controller
         $sortField = $request->input('sort', $defaultSortField);
         $sortDirection = $request->input('sortDir', $defaultSortDirection);
 
-        $users = User::orderBy($sortField, $sortDirection)->paginate(10);
+        $searchTerm = $request->input('search');
+
+        $users = User::where('name', 'like', "%$searchTerm%")
+            ->orderBy($sortField, $sortDirection)
+            ->paginate(10);
 
         $props = [
-            'users' => $users->appends(['sort' => $sortField, 'sortDir' => $sortDirection]),
+            'users' => $users->appends(['sort' => $sortField, 'sortDir' => $sortDirection, 'search' => $searchTerm]),
             'defaultSortField' => $defaultSortField,
             'defaultSortDir' => $defaultSortDirection,
         ];
