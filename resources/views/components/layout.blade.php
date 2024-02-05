@@ -9,13 +9,15 @@
 
     <title>{{ $title }}</title>
 
+    <link rel="icon" href="https://emojicdn.elk.sh/🏓">
+
     <!-- HTMX -->
     <script src="https://unpkg.com/htmx.org@1.9.10"
         integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous">
     </script>
 
     <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
 
     @vite('resources/js/app.js')
 </head>
